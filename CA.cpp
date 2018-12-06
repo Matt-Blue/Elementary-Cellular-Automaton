@@ -1,10 +1,17 @@
 #include <iostream>
 #include <stdlib.h>
 #include "CA.h"
-using namespace std; 
+using namespace std;
   
 int main(int argc, char** argv) 
 {
+
+    // Input error checking
+    if(argc != 5){ cout << "Incorrect number of input values"; return -1; }
+    if(strtol(argv[1], NULL, 10) < 0 || strtol(argv[1], NULL, 10) > 256){ cout << "Seed must be between 0 and 255"; return -1; }
+    if(strtol(argv[2], NULL, 10) < 0 || strtol(argv[2], NULL, 10) > 256){ cout << "Key must be between 0 and 255"; return -1; }
+    if(strtol(argv[3], NULL, 10) < 1){ cout << "There must be at least one repetition"; return -1; }
+    if(strtol(argv[4], NULL, 10) < 0 || strtol(argv[4], NULL, 10) > 1){ cout << "The display bit must be of value 1 or 0"; return -1; }
 
     // Repetitions of the algorithm
     int repetitions = strtol(argv[3], NULL, 10);
